@@ -8,7 +8,7 @@
     padding: 15px;
     display: flex;
     align-items: center;
-    border-botton: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
 }
 
 .chat__headerInfo {

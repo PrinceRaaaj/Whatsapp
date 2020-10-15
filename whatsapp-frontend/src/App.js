@@ -42,7 +42,7 @@ function App() {
             </Route>
             <Route path="/">
             <div className="app__bodyimg">
-            <img className="app__bodyimg" alt="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/766px-WhatsApp.svg.png"></img>
+            <img alt="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/766px-WhatsApp.svg.png"></img>
             </div>
             </Route>
           </Switch>
