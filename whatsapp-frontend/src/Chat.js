@@ -12,7 +12,6 @@ import Pusher from "pusher-js";
 export default function Chat({name}){
 
     const [input, setInput] = useState("");
-    const [seed, setSeed] = useState("");
     const [messages, setMessages] = useState([]);
     const [roomName, setRoomName] = useState("");
     const [lastSeen, setLastSeen] = useState("");
@@ -23,7 +22,7 @@ export default function Chat({name}){
             setRoomName(response.data.roomName);
             setMessages(response.data.messages);
         })
-    }, [roomId])
+    }, [roomId]);
 
     useEffect(()=>{
         const pusher = new Pusher("16c74566fc8f85841108", {
@@ -31,19 +30,14 @@ export default function Chat({name}){
         });
         const channel = pusher.subscribe("rooms");
         channel.bind("updated", function(data) {
-          setMessages([...messages, data]);
-
+            setMessages([...messages, data]);
         });
         return ()=>{
             channel.unbind_all();
             channel.unsubscribe();
         }
     }, [messages]);
-
-    useEffect(()=>{
-        setSeed(Math.floor(Math.random()*1000));
-    }, []);
-    
+ 
     function sendMessage(event){
         const dateTime = new Date().toLocaleString();
         axios.post(`/rooms/${roomId}/newMessage`, {
@@ -59,7 +53,7 @@ export default function Chat({name}){
     return(
         <div className="chat">
             <div className="chat__header">
-                <Avatar src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`}/>
+                <Avatar src={`https://avatars.dicebear.com/api/avataaars/${roomId}.svg`}/>
                 <div className="chat__headerInfo">
                     <h3>{roomName}</h3>
                     <p>{lastSeen}</p>
@@ -71,15 +65,6 @@ export default function Chat({name}){
                 </div>
             </div>
             <div className="chat__body">
-                {/* <div className={`chat__message ${true && "chat__receiver"}`}>
-                    <span className="chat__name">
-                        Random Name
-                    </span>
-                    Hey guys , whatsUp..!
-                    <span className="chat__timestamp">
-                        2:30 PM
-                    </span>
-                </div> */}
                 {messages.map(message=>{
                     return  <div className={`chat__message ${name===message.name && "chat__receiver"}`} key={message._id}>
                                 <span className="chat__name">

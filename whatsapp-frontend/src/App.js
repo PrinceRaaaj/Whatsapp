@@ -24,7 +24,7 @@ function App() {
       { !userLoggedIn
         ?
         <div className="app__login">
-          <img className="app__img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/766px-WhatsApp.svg.png"></img>
+          <img className="app__img" alt="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/766px-WhatsApp.svg.png"></img>
           <h1>SignIn into Whatsapp</h1>
           <form>
             <input type="text" placeholder="Enter Full Name" value={name} onChange={e=>setName(e.target.value)} required></input>
@@ -41,7 +41,9 @@ function App() {
               <Chat name={name}/>
             </Route>
             <Route path="/">
-              {/* <Chat /> */}
+            <div className="app__bodyimg">
+            <img className="app__bodyimg" alt="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/766px-WhatsApp.svg.png"></img>
+            </div>
             </Route>
           </Switch>
         </Router>

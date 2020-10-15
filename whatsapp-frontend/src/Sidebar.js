@@ -8,9 +8,6 @@
  import Pusher from "pusher-js";
  import SidebarChat from "./SidebarChat";
  import axios from "./axios";
-
-//  import db from "./firebase.js";
-
  export default function Sidebar(){
 
     const [rooms, setRooms] = useState([]);
@@ -37,7 +34,9 @@
 
     const createChat=()=>{
         const roomName = prompt("Please Enter name for Chat");
-        axios.post("/rooms/create", {roomName : roomName});
+        if (roomName !== "" && roomName !== null){
+            axios.post("/rooms/create", {roomName : roomName});
+        } 
     }
 
     return (
@@ -63,7 +62,6 @@
                 {rooms.map(room=>(
                     <SidebarChat key={room._id} id={room._id} room={room} />
                 ))}
-
             </div> 
         </div>
      );

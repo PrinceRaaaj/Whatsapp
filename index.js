@@ -63,15 +63,6 @@ db.once('open', () => {
     });
   });
 
-//*** Routes ***//
-// app.use(express.static("whatsapp-frontend/build"));
-
-//     app.get("/", (req, res)=>{
-//         res.sendFile(path.join(__dirname, "whatsapp-frontend", "build", "index.html"));
-//   });
-
-
-
 if(process.env.NODE_ENV === "production"){
     app.use(express.static("whatsapp-frontend/build"));
 
@@ -127,7 +118,6 @@ if(process.env.NODE_ENV === "production"){
             }
         );
     });
-
 }
 
 const port = process.env.PORT || 9000;
