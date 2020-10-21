@@ -29,7 +29,7 @@ export default function Chat({name}){
           cluster: "ap2"
         });
         const channel = pusher.subscribe("rooms");
-        channel.bind("updated", function(data) {
+         channel.bind("updated", function(data) {
             setMessages([...messages, data]);
         });
         return ()=>{
@@ -53,7 +53,7 @@ export default function Chat({name}){
     return(
         <div className="chat">
             <div className="chat__header">
-                <Avatar src={`https://avatars.dicebear.com/api/avataaars/${roomId}.svg`}/>
+                <Avatar src={`https://joeschmoe.io/api/v1/${roomId}`}/>
                 <div className="chat__headerInfo">
                     <h3>{roomName}</h3>
                     <p>{lastSeen}</p>
